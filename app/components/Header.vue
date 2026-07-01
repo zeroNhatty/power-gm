@@ -8,8 +8,8 @@
       <a class="btn btn-ghost text-xl">PGM</a>
     </div>
 
-    <div class="navbar-end">
-      <a class="btn">Map</a>
+    <div class="navbar-end gap-3">
+      <a class="link link-hover">Monitor</a>
       <a class="btn">Login</a>
     </div>
   </div>

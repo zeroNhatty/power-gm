@@ -6,6 +6,6 @@
 
 
 ## Immediate Todo
-- [ ] Make a basic landing page.
+- [x] Make a basic landing page.
 - [ ] Make a login page.
  
