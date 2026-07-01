@@ -6,7 +6,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   alias: {'@': fileURLToPath (new URL('~/app', import.meta.url))},
   css: ['./app/assets/css/main.css'],
-  modules: ['@nuxt/ui'],
+  modules: ['@nuxt/test-utils'],
   vite: {
     optimizeDeps: {
       include: [
