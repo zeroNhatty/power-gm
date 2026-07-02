@@ -86,4 +86,5 @@ but I had a few gray areas with the initial design I made:
   - What if we have millions of node how would the Golang server handle that?
   - Would -rw operations be done on every update of a node? (prolly not)
   - How do I handle multiple -rw operations on the DB?
+  - What should be the DB?
 </details>
