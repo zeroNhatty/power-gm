@@ -2,6 +2,8 @@
 - [Technicians Portal](#technician-portal)
 - [Initial System Design](#initial-system-design)
 
+---
+
 ## Technician Portal
 <small>This was written on July 2 / 2026</small>
 <details>
@@ -28,6 +30,7 @@
 - Like the technicians the mangers will use the `/operational` route to access there page (Note: Pages the managers and technicians use will be different)
 </details>
 
+---
 
 ## Initial System Design
 <small>This was written on July 2 / 2026</small>
