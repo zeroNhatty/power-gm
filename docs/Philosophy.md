@@ -1,7 +1,9 @@
 # Contents
 - [Technicians Portal](#technician-portal)
+- [Initial System Design](#initial-system-design)
 
 ## Technician Portal
+<small>This was written on July 2 / 2026</small>
 <details>
 <summary><strong>Access Method to Portal</strong></summary>
 
@@ -26,5 +28,59 @@
 - Like the technicians the mangers will use the `/operational` route to access there page (Note: Pages the managers and technicians use will be different)
 </details>
 
-<small>This was written on July 2 / 2026</small>
 
+## Initial System Design
+<small>This was written on July 2 / 2026</small>
+- On commit [2e3be05](https://github.com/zeroNhatty/power-gm/commit/2e3be057a4e97674ef6225366abfa05340c00649) I mentioned that the [power-gm-server](https://github.com/zeroNhatty/power-gm-server.git) development should be started. So I started by asking myself a few questions
+  <details>
+    <summary><i><strong>
+      What will the server do?
+    </strong></i></summary>
+  
+    - It will host the database and the nodes will ping the server.
+  </details>
+
+  <details>
+    <summary><i><strong> 
+      Would laravel be able to handle both nodes pinging it and client machines making requests?
+    </strong></i></summary>
+  
+    - I am not familiar with Laravel memory footprint, but I know php isn't the best when it comes to concurrency. 
+    - So I saw a need to separate the server into 2 parts:
+      - One that handles client side requests and database 
+      - The other listens to the node pings keeps tracks of their activities and notifies the Laravel section of the code to make changes depending on the node status.
+  </details>
+
+  <details>
+    <summary><i><strong>
+      Why does the golang section of the code keep track of the status of the nodes?
+    </strong></i></summary>
+
+    - I have a few reasons to do that:
+      - The Laravel section of the code is handling the CRUD operations, processing client side requests, and pushing updates to the client. We know Laravel is made to handle those actions but when the number of users and nodes increase it will make our system use up alot more memory and cpu time which isn't ideal.
+      - Golang statically links on build which makes it ideal because there is no external dependencies.
+      - Golang excels in concurrency by design.
+  </details>
+
+  <details>
+    <summary><i><strong>
+      How will the nodes be simulated?
+    </strong></i></summary>
+  
+  - For the node simulation I wanted to stay true to the embedded system architecture and use `C++`.
+  - The reason I opted for `C++` rather than `C` is because I will need some sort of gui to control the nodes, and it's easier to a gui using `C++` compared to `C`.
+  - It works by enabling, disabling, overfeeding and underfeeding a node and the nodes ping the go server endpoint and the Golang script process the pings or no pings and act accordingly.
+  </details>
+
+- Here is a very crude design of the system: 
+![Initial System Design Image 1](src/initial-sys-design.svg)
+but I had a few gray areas with the initial design I made:
+<details>
+  <summary><strong>
+    Gray areas about intial design:
+  </strong></summary>
+
+  - What if we have millions of node how would the Golang server handle that?
+  - Would -rw operations be done on every update of a node? (prolly not)
+  - How do I handle multiple -rw operations on the DB?
+</details>
