@@ -10,11 +10,6 @@
 
     <div class="navbar-end gap-3">
       <a class="link link-hover">Monitor</a>
-      <a class="btn">Login</a>
     </div>
   </div>
 </template>
-
-<style scoped>
-
-</style>
