@@ -10,5 +10,7 @@
 
 ## Immediate Todo
 - [x] Make a basic landing page.
-- [ ] Make a login page.
+- [x] Make a login page.
+- [ ] Make the login page functional
+  - this requires a backend server which will be developed in [power-gm-server](https://github.com/zeroNhatty/power-gm-server.git) 
  
