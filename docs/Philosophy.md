@@ -88,3 +88,8 @@ but I had a few gray areas with the initial design I made:
   - How do I handle multiple -rw operations on the DB?
   - What should be the DB?
 </details>
+
+<small>This was written on July 3 / 2026</small>
+```
+After a bit of consoltation I have decided to keep it simple for now and revisit the issue after a stable version is ready.
+```
