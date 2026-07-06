@@ -1,6 +1,7 @@
 # Contents
 - [Technicians Portal](#technician-portal)
 - [Initial System Design](#initial-system-design)
+- [Login Implementation Difficulties](#login-implementation-difficulties)
 
 ---
 
@@ -93,3 +94,17 @@ but I had a few gray areas with the initial design I made:
 ```
 After a bit of consoltation I have decided to keep it simple for now and revisit the issue after a stable version is ready.
 ```
+
+---
+## Login Implementation Difficulties
+
+  <summary><strong>Challenges During Login Implementation</strong></summary>
+
+- Initially, I was planning to make the authentication on the server side, but after 2 days of struggling, I started noticing most documentations, videos,
+    and articles all suggest to keep login, logout, and update user on the client side. So I started to implement the authentication on the client side,
+    but I had a hard time trying to figure out how to do csrf-cookie and xsrf-token auth. I spent around half a day trying to do that, 
+    but eventually found the [nuxt-auth-sanctum](https://nuxt.com/modules/nuxt-auth-sanctum) module, which made things far more easier. Now I can authenticate and fetch the authenticated user.
+
+- Here is a preview of that:
+  ![Success Fetching Authenticated User Screenshot](src/fetch_user_preview.png)
+

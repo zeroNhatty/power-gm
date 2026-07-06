@@ -2,6 +2,9 @@
 ## Contents
 * [Day 1](#day-1-july-1--2026)
 * [Day 2](#day-2-july-2--2026)
+* [Day 6](#day-6-july-6--2026)
+
+---
 
 ### Day 1 (July 1 / 2026)
 <details>
@@ -15,6 +18,8 @@
 
 </details>
 
+---
+
 ### Day 2 (July 2 / 2026)
 <small>Missed Changelog</small>
 <details>
@@ -26,3 +31,13 @@
   ![login page footer](src/login_page_v1_2.png)
 - Some design decisions were documented in [philosophy](Philosophy.md) equivalent commit being [b545eba](https://github.com/zeroNhatty/power-gm/commit/b545eba1a0d5da40582a56c7008ace42459f18b8)
 </details>
+
+---
+
+### Day 6 (July 6 / 2026)
+<details>
+  <summary><strong>Login Functionality</strong></summary>
+  
+  - A working login system using [nuxt-auth-sanctum](https://nuxt.com/modules/nuxt-auth-sanctum)
+</details>
+
