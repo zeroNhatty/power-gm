@@ -97,8 +97,9 @@ After a bit of consoltation I have decided to keep it simple for now and revisit
 
 ---
 ## Login Implementation Difficulties
+<small>This was written on July 6/ 2026</small>
 
-  <summary><strong>Challenges During Login Implementation</strong></summary>
+<strong>Challenges During Login Implementation</strong>
 
 - Initially, I was planning to make the authentication on the server side, but after 2 days of struggling, I started noticing most documentations, videos,
     and articles all suggest to keep login, logout, and update user on the client side. So I started to implement the authentication on the client side,
