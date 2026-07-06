@@ -1,5 +1,15 @@
 <script setup lang="ts">
+const { login } = useSanctumAuth()
 
+const credentials = {
+  email: null,
+  password: null,
+  remember: false,
+}
+
+const loginFire = async () => {
+  await login(credentials)
+}
 </script>
 
 <template>
@@ -13,14 +23,20 @@
       </div>
       <div class="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
         <div class="card-body">
-          <fieldset class="fieldset">
-            <label class="label">Email</label>
-            <input type="email" class="input" placeholder="Email" />
-            <label class="label">Password</label>
-            <input type="password" class="input" placeholder="Password" />
-            <div><a class="link link-hover">Forgot password?</a></div>
-            <button class="btn btn-neutral mt-4">Login</button>
-          </fieldset>
+          <form @submit.prevent="loginFire">
+            <fieldset class="fieldset">
+              <label class="label">Email</label>
+              <input v-model="credentials.email" type="email" class="input" placeholder="Email" />
+              <label class="label">Password</label>
+              <input v-model="credentials.password" type="password" class="input" placeholder="Password" />
+              <label class="label">
+                <input v-model="credentials.remember" type="checkbox" class="checkbox" />
+                Remember me
+              </label>
+              <div><a class="link link-hover">Forgot password?</a></div>
+              <button class="btn btn-neutral mt-4" type="submit">Login</button>
+            </fieldset>
+          </form>
         </div>
       </div>
     </div>
