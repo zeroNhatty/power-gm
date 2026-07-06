@@ -1,4 +1,8 @@
 <script setup lang="ts">
+
+definePageMeta({
+  layout: 'operational',
+});
 const { login } = useSanctumAuth()
 
 const credentials = {
