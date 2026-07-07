@@ -48,3 +48,5 @@
 - System remembers user for 1 hour by storing them in cookies commit [2348964](https://github.com/zeroNhatty/power-gm/commit/2348964e2a0be56bcd35192fc2653d901b4f169e)
 - Added a custom header component displayed after login (basic must be updated)
 - default impelmentation of power nodes data model
+- Simple structure rendering of raw power node data
+![preiview](src/dashboard_power_node_raw_data_render.png)
