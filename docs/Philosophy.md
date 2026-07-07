@@ -113,7 +113,18 @@ After a bit of consoltation I have decided to keep it simple for now and revisit
 <small>This was written on July 7 / 2026</small>
 
 - I have made the initial design for the power node model 
+<details>
+<summary>Design Image</summary>
+
 ![power nodes design v1](src/power_nodes_design_v1.png)
+</details>
+
 according to this article from [Wikipedia](https://en.wikipedia.org/wiki/Electrical_grid) 
-- Specifically this image from the article: ![electrical diagram](https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/A_network_diagram_of_the_%27nesta_case1354_pegase_high_voltage%27_electrical_power_system.png/960px-A_network_diagram_of_the_%27nesta_case1354_pegase_high_voltage%27_electrical_power_system.png)
+
+<details>
+<summary>Specifically this image from the article</summary>
+
+![electrical diagram](https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/A_network_diagram_of_the_%27nesta_case1354_pegase_high_voltage%27_electrical_power_system.png/960px-A_network_diagram_of_the_%27nesta_case1354_pegase_high_voltage%27_electrical_power_system.png)
+</details>
+
 - I have realized there are multiple types of power nodes which sometime loopback but inorder to avoid complexity I have decided to keep it simple and use the initial design
