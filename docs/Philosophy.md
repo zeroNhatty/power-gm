@@ -100,7 +100,6 @@ After a bit of consoltation I have decided to keep it simple for now and revisit
 <small>This was written on July 6/ 2026</small>
 
 <strong>Challenges During Login Implementation</strong>
-
 - Initially, I was planning to make the authentication on the server side, but after 2 days of struggling, I started noticing most documentations, videos,
     and articles all suggest to keep login, logout, and update user on the client side. So I started to implement the authentication on the client side,
     but I had a hard time trying to figure out how to do csrf-cookie and xsrf-token auth. I spent around half a day trying to do that, 
@@ -109,3 +108,12 @@ After a bit of consoltation I have decided to keep it simple for now and revisit
 - Here is a preview of that:
   ![Success Fetching Authenticated User Screenshot](src/fetch_user_preview.png)
 
+---
+## Basic Power Nodes Design
+<small>This was written on July 7 / 2026</small>
+
+- I have made the initial design for the power node model 
+![power nodes design v1](src/power_nodes_design_v1.png)
+according to this article from [Wikipedia](https://en.wikipedia.org/wiki/Electrical_grid) 
+- Specifically this image from the article: ![electrical diagram](https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/A_network_diagram_of_the_%27nesta_case1354_pegase_high_voltage%27_electrical_power_system.png/960px-A_network_diagram_of_the_%27nesta_case1354_pegase_high_voltage%27_electrical_power_system.png)
+- I have realized there are multiple types of power nodes which sometime loopback but inorder to avoid complexity I have decided to keep it simple and use the initial design

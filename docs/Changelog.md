@@ -3,6 +3,7 @@
 * [Day 1](#day-1-july-1--2026)
 * [Day 2](#day-2-july-2--2026)
 * [Day 6](#day-6-july-6--2026)
+* [Day 7](#day-7-july-7--2026)
 
 ---
 
@@ -22,22 +23,28 @@
 
 ### Day 2 (July 2 / 2026)
 <small>Missed Changelog</small>
-<details>
-<summary><strong>Design Decisions and Login UI</strong></summary>
+<strong>Design Decisions and Login UI</strong>
 
 - A basic route called `/operational` was implemented.
 - A basic login page was made.
   ![login page screenshot](src/login_page_v1_1.png)
   ![login page footer](src/login_page_v1_2.png)
 - Some design decisions were documented in [philosophy](Philosophy.md) equivalent commit being [b545eba](https://github.com/zeroNhatty/power-gm/commit/b545eba1a0d5da40582a56c7008ace42459f18b8)
-</details>
+
 
 ---
 
 ### Day 6 (July 6 / 2026)
-<details>
-  <summary><strong>Login Functionality</strong></summary>
+<strong>Login Functionality</strong>
   
   - A working login system using [nuxt-auth-sanctum](https://nuxt.com/modules/nuxt-auth-sanctum)
-</details>
 
+
+---
+### Day 7 (July 7 / 2026)
+
+**User Session & access**
+
+- System remembers user for 1 hour by storing them in cookies commit [2348964](https://github.com/zeroNhatty/power-gm/commit/2348964e2a0be56bcd35192fc2653d901b4f169e)
+- Added a custom header component displayed after login (basic must be updated)
+- default impelmentation of power nodes data model
