@@ -3,20 +3,29 @@
 definePageMeta({
   layout: 'operational',
 });
-const { login } = useSanctumAuth()
+const { login , logout } = useSanctumAuth()
 
 const credentials = {
   email: null,
   password: null,
   remember: false,
 }
-
+let  showAlert = false;
 const loginFire = async () => {
-  await login(credentials)
+  try{
+    await login(credentials)
+  }
+  catch (e) {
+    showAlert = true
+    await new Promise(resolve => setTimeout(resolve, 3000))
+    showAlert = false
+  }
 }
 </script>
 
 <template>
+  <LazyErrorAlert v-if="showAlert"/>
+  <NuxtAnnouncer/>
   <div class="hero bg-base-200 min-h-screen">
     <div class="hero-content flex-col lg:flex-row-reverse">
       <div class="text-center lg:text-left">
@@ -30,9 +39,9 @@ const loginFire = async () => {
           <form @submit.prevent="loginFire">
             <fieldset class="fieldset">
               <label class="label">Email</label>
-              <input v-model="credentials.email" type="email" class="input" placeholder="Email" />
+              <input v-model="credentials.email" type="email" class="input" placeholder="Email" required/>
               <label class="label">Password</label>
-              <input v-model="credentials.password" type="password" class="input" placeholder="Password" />
+              <input v-model="credentials.password" type="password" class="input" placeholder="Password" required/>
               <label class="label">
                 <input v-model="credentials.remember" type="checkbox" class="checkbox" />
                 Remember me

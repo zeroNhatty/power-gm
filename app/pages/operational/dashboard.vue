@@ -1,17 +1,13 @@
 <script setup lang="ts">
 definePageMeta({
-  layout: 'operational',
+  layout: 'operational-logged-in',
   middleware: ['sanctum:auth'],
 });
-
-const user = useSanctumUser();
-
 </script>
 
 <template>
-Holla
-
-  <LazyBody>{{user}}</LazyBody>
+  works ig
+<NuxtLink href="profile">Profile</NuxtLink>
 </template>
 
 <style scoped>
