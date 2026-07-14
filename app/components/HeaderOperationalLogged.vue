@@ -17,9 +17,11 @@
     <div class="navbar-end">
       <div class="avatar avatar-placeholder">
         <div class="bg-neutral text-neutral-content w-10 rounded-full">
-          <span v-if="userFirstName" class="text-2xl">
-            {{userFirstName[0]}}
-          </span>
+          <NuxtLink href="profile">
+             <span v-if="userFirstName" class="text-2xl">
+              {{userFirstName[0]}}
+            </span>
+          </NuxtLink>
         </div>
       </div>
     </div>
