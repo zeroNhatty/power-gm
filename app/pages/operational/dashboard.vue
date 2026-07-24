@@ -12,8 +12,6 @@ const NodeSchema = z.object({
   status: z.string(),
 })
 
-type Node = z.infer<typeof NodeSchema>
-
 const client = useSanctumClient()
 const { data: nodes, error, pending } = await useAsyncData('nodes', async () => {
   const response = await client('/api/nodes')
