@@ -1,10 +1,19 @@
 <script setup lang="ts">
+  const { logout } = useSanctumAuth()
   definePageMeta({
     layout: 'operational-logged-in',
     middleware: ['sanctum:auth'],
   });
 
   const user = useUserSession()['user']
+
+  async function logoutUser(){
+    try{
+      await logout()
+    }catch(err){
+      console.log(err)
+    }
+  }
 </script>
 
 <template>
@@ -17,6 +26,9 @@
         <p>{{user?.date_of_birth}}</p>
         <p>{{user?.gender}}</p>
         <p>{{user?.role}}</p>
+        <button class="btn btn-error" @click="logoutUser">
+          Logout
+        </button>
       </div>
     </div>
   </div>

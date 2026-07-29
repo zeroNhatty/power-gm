@@ -3,7 +3,7 @@
 definePageMeta({
   layout: 'operational',
 });
-const { login , logout } = useSanctumAuth()
+const { login } = useSanctumAuth()
 
 const credentials = {
   email: null,
