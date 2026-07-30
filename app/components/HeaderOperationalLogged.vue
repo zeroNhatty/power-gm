@@ -1,5 +1,6 @@
 <script setup lang="ts">
- const userFirstName : string | undefined = useUserSession()['user'].value?.firstname
+const userFirstName : string | undefined = useUserSession()['user'].value?.firstname
+const userRole : string | undefined = useUserSession()['user'].value?.role
 </script>
 
 <template>
@@ -11,7 +12,7 @@
       <div role="tablist" class="tabs tabs-border">
         <NuxtLink to="dashboard" role="tab" class="tab">Status</NuxtLink>
         <NuxtLink to="tickets" role="tab" class="tab">Tickets</NuxtLink>
-        <NuxtLink to="management" role="tab" class="tab">User Management</NuxtLink>
+        <NuxtLink v-if="userRole == 'manager'" to="management" role="tab" class="tab">User Management</NuxtLink>
         <NuxtLink to="" role="tab" class="tab"></NuxtLink>
       </div>
     </div>

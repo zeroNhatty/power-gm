@@ -12,7 +12,7 @@
             This is a theoretical simulator for a power grid monitoring system including power status, down time and fault pinpointing.
           </p>
           <div class="space-x-4 flex items-center justify-center">
-            <button class="btn btn-primary">Get Started</button>
+            <NuxtLink class="btn btn-primary" to="dashboard">Get Started</NuxtLink>
             <a class="btn btn-soft btn-secondary gap-1" href="#more-about-pgm">
               <span class="flex items-center">Learn More</span>
               <span class="material-symbols-outlined">
@@ -32,7 +32,7 @@
             <code class="bg-base-300 px-1.5 py-0.5 rounded">Power Grid Monitor</code> or PGM for short is a multi-layer web application that
             aims to showcase what a power grid monitor system would do to monitor individual power lines and nodes.
           </p>
-          <button class="btn btn-primary">Get Started</button>
+          <NuxtLink class="btn btn-primary" to="dashboard">Get Started</NuxtLink>
         </div>
       </div>
     </div>
