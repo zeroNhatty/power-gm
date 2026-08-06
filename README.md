@@ -9,8 +9,13 @@
 ⚠️The up-to-date branch will always be [dev](https://github.com/zeroNhatty/power-gm/tree/dev)
 
 ## Immediate Todo
-- [x] Make a basic landing page.
-- [x] Make a login page.
-- [ ] Make the login page functional
-  - this requires a backend server which will be developed in [power-gm-server](https://github.com/zeroNhatty/power-gm-server.git) 
- 
+### FIX: On the node simulator
+
+- [ ] You can change a node's status to "being_marinated" with a null assignee (technician).
+- [ ] The nodes do not currently fetch data from the database to keep their state updated in real-time.
+Unimplemented Features
+
+### Implement: Missing manager features for technician management
+- [ ] Overall stats (e.g., "totally fixed" counts, total uptime) 
+- [ ] parent-child node relationships (if the parents are off children are off)
+- [ ] Map visualization

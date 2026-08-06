@@ -8,10 +8,13 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
   alias: {'@': fileURLToPath (new URL('~/app', import.meta.url))},
-  css: ['./app/assets/css/main.css'],
+  css: [
+    '~/assets/css/main.css',
+    'maplibre-gl/dist/maplibre-gl.css',
+  ],
   modules: ['@nuxt/test-utils', 'nuxt-auth-sanctum'],
   sanctum: {
-    baseUrl: "http://localhost:8000",
+    baseUrl: "http://127.0.0.1:8000",
     redirect:{
       onLogin: "/operational/dashboard",
       onAuthOnly: "/operational",
@@ -23,7 +26,11 @@ export default defineNuxtConfig({
       include: [
         '@vue/devtools-core',
         '@vue/devtools-kit',
-      ]
+        'zod',
+      ],
+      exclude: [
+        'maplibre-gl',
+      ],
     },
     plugins: [tailwindcss() as any],
   },
