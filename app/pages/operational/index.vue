@@ -36,7 +36,7 @@ const loginFire = async () => {
 
 <template>
   <div>
-    <LazyErrorAlert v-if="showAlert" />
+    <ErrorAlert v-if="showAlert" />
 
     <NuxtAnnouncer />
 

@@ -4,7 +4,7 @@ const userRole : string | undefined = useUserSession()['user'].value?.role
 </script>
 
 <template>
-  <div class="navbar bg-base-100 shadow-sm">
+  <div class="navbar bg-base-100 shadow-sm mb-4">
     <div class="navbar-start">
       <p class="text-xl">PGM - Operational</p>
     </div>

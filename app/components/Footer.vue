@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <footer class="footer sm:footer-horizontal bg-neutral text-neutral-content items-center p-4">
+  <footer class="footer sm:footer-horizontal bg-neutral text-neutral-content items-center p-4 fixed bottom-0 left-0">
     <aside class="grid-flow-col items-center">
       <svg
           width="36"
