@@ -1,572 +1,111 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from "vue";
-import * as turf from "@turf/turf";
-import type { Feature, Polygon, MultiPolygon } from "geojson";
+import { onMounted, onUnmounted } from "vue";
 
-const addisGeoJson = [[
-  [
-    38.8051258,
-    9.0823296
-  ],
-  [
-    38.8133762,
-    9.0800214
-  ],
-  [
-    38.8191568,
-    9.0779194
-  ],
-  [
-    38.8247354,
-    9.0758895
-  ],
-  [
-    38.8321309,
-    9.0770227
-  ],
-  [
-    38.8425694,
-    9.0786137
-  ],
-  [
-    38.8485695,
-    9.0782303
-  ],
-  [
-    38.8495284,
-    9.0781687
-  ],
-  [
-    38.8567516,
-    9.0835228
-  ],
-  [
-    38.8682194,
-    9.084908
-  ],
-  [
-    38.8763211,
-    9.081584
-  ],
-  [
-    38.8791113,
-    9.0755286
-  ],
-  [
-    38.8819581,
-    9.0685593
-  ],
-  [
-    38.8829755,
-    9.0604766
-  ],
-  [
-    38.8829435,
-    9.0521066
-  ],
-  [
-    38.8863252,
-    9.0468076
-  ],
-  [
-    38.8933472,
-    9.0372129
-  ],
-  [
-    38.8964201,
-    9.0309447
-  ],
-  [
-    38.8991683,
-    9.0244216
-  ],
-  [
-    38.9049939,
-    9.0095276
-  ],
-  [
-    38.9060591,
-    8.9974948
-  ],
-  [
-    38.9043127,
-    8.9920642
-  ],
-  [
-    38.9049474,
-    8.9839341
-  ],
-  [
-    38.9062501,
-    8.9775024
-  ],
-  [
-    38.9039804,
-    8.9690976
-  ],
-  [
-    38.9028418,
-    8.9625832
-  ],
-  [
-    38.8962862,
-    8.9548682
-  ],
-  [
-    38.9011085,
-    8.9461583
-  ],
-  [
-    38.8967472,
-    8.9369348
-  ],
-  [
-    38.8913997,
-    8.9343651
-  ],
-  [
-    38.8827755,
-    8.9360339
-  ],
-  [
-    38.8694907,
-    8.939618
-  ],
-  [
-    38.8614311,
-    8.9426374
-  ],
-  [
-    38.8555624,
-    8.938272
-  ],
-  [
-    38.8608831,
-    8.9321531
-  ],
-  [
-    38.8735616,
-    8.9236509
-  ],
-  [
-    38.8794517,
-    8.9182712
-  ],
-  [
-    38.8772063,
-    8.9126375
-  ],
-  [
-    38.873328,
-    8.9050386
-  ],
-  [
-    38.8774979,
-    8.8957904
-  ],
-  [
-    38.869796,
-    8.8806611
-  ],
-  [
-    38.8687291,
-    8.873001
-  ],
-  [
-    38.8638466,
-    8.8828331
-  ],
-  [
-    38.8583143,
-    8.8836371
-  ],
-  [
-    38.8471473,
-    8.8799828
-  ],
-  [
-    38.8406747,
-    8.8798598
-  ],
-  [
-    38.8329708,
-    8.8829519
-  ],
-  [
-    38.8260074,
-    8.8802252
-  ],
-  [
-    38.8269214,
-    8.8737177
-  ],
-  [
-    38.8294242,
-    8.8687746
-  ],
-  [
-    38.8270584,
-    8.8632892
-  ],
-  [
-    38.8262665,
-    8.857582
-  ],
-  [
-    38.8239247,
-    8.8527531
-  ],
-  [
-    38.8238478,
-    8.8464243
-  ],
-  [
-    38.8243731,
-    8.8413064
-  ],
-  [
-    38.8174511,
-    8.839277
-  ],
-  [
-    38.8125422,
-    8.8399896
-  ],
-  [
-    38.8054961,
-    8.8369092
-  ],
-  [
-    38.7975763,
-    8.8334665
-  ],
-  [
-    38.7920497,
-    8.8357594
-  ],
-  [
-    38.7867365,
-    8.8353026
-  ],
-  [
-    38.7805934,
-    8.8359223
-  ],
-  [
-    38.778379,
-    8.8418097
-  ],
-  [
-    38.7774651,
-    8.8524396
-  ],
-  [
-    38.7729905,
-    8.8574641
-  ],
-  [
-    38.7615886,
-    8.8536188
-  ],
-  [
-    38.7592493,
-    8.8534389
-  ],
-  [
-    38.7564687,
-    8.8532382
-  ],
-  [
-    38.7541149,
-    8.8586055
-  ],
-  [
-    38.7455228,
-    8.8634242
-  ],
-  [
-    38.7451937,
-    8.8693914
-  ],
-  [
-    38.7472872,
-    8.8771728
-  ],
-  [
-    38.7431637,
-    8.8804283
-  ],
-  [
-    38.7444825,
-    8.8921161
-  ],
-  [
-    38.7435959,
-    8.9025983
-  ],
-  [
-    38.7365184,
-    8.90128
-  ],
-  [
-    38.7310547,
-    8.905098
-  ],
-  [
-    38.7272387,
-    8.9108429
-  ],
-  [
-    38.7234327,
-    8.9144841
-  ],
-  [
-    38.719143,
-    8.9197138
-  ],
-  [
-    38.7084408,
-    8.920897
-  ],
-  [
-    38.7019539,
-    8.9256384
-  ],
-  [
-    38.6968403,
-    8.9326944
-  ],
-  [
-    38.6938452,
-    8.9419026
-  ],
-  [
-    38.6879074,
-    8.9397425
-  ],
-  [
-    38.6806327,
-    8.9410778
-  ],
-  [
-    38.6810167,
-    8.949448
-  ],
-  [
-    38.6762621,
-    8.9576243
-  ],
-  [
-    38.6653955,
-    8.9610745
-  ],
-  [
-    38.6533465,
-    8.9629251
-  ],
-  [
-    38.642835,
-    8.9658071
-  ],
-  [
-    38.6393858,
-    8.9740383
-  ],
-  [
-    38.6470593,
-    8.9754655
-  ],
-  [
-    38.6546345,
-    8.9769481
-  ],
-  [
-    38.659402,
-    8.985487
-  ],
-  [
-    38.6578021,
-    8.9947837
-  ],
-  [
-    38.6510546,
-    9.0024457
-  ],
-  [
-    38.6519665,
-    9.0103016
-  ],
-  [
-    38.6601302,
-    9.0093592
-  ],
-  [
-    38.6669903,
-    9.0100405
-  ],
-  [
-    38.6665304,
-    9.0167402
-  ],
-  [
-    38.6672586,
-    9.0263163
-  ],
-  [
-    38.6721258,
-    9.0332428
-  ],
-  [
-    38.6725473,
-    9.0386173
-  ],
-  [
-    38.6835386,
-    9.0500205
-  ],
-  [
-    38.6836883,
-    9.0663763
-  ],
-  [
-    38.6854418,
-    9.0730423
-  ],
-  [
-    38.6941565,
-    9.0775273
-  ],
-  [
-    38.7007058,
-    9.0805356
-  ],
-  [
-    38.7067959,
-    9.0818493
-  ],
-  [
-    38.7167045,
-    9.0877799
-  ],
-  [
-    38.7271497,
-    9.0857203
-  ],
-  [
-    38.7381491,
-    9.0868637
-  ],
-  [
-    38.7509359,
-    9.0905656
-  ],
-  [
-    38.7594575,
-    9.0959838
-  ],
-  [
-    38.7653115,
-    9.0981777
-  ],
-  [
-    38.7712173,
-    9.0981915
-  ],
-  [
-    38.7781789,
-    9.0936635
-  ],
-  [
-    38.7913118,
-    9.0777124
-  ],
-  [
-    38.7999391,
-    9.0785574
-  ],
-  [
-    38.8051258,
-    9.0823296
-  ]
-]];
+import Map from "ol/Map.js";
+import View from "ol/View.js";
+import GeoJSON from "ol/format/GeoJSON.js";
 
-const mapContainer = ref<HTMLElement | null>(null);
-let map: any = null;
+import TileLayer from "ol/layer/Tile.js";
+import VectorLayer from "ol/layer/Vector.js";
 
-const addis: Feature<Polygon> = {
-    type: "Feature",
-    properties: {},
-    geometry: {
-      type: "Polygon",
-      coordinates: addisGeoJson,
+import OSM from "ol/source/OSM.js";
+import VectorSource from "ol/source/Vector.js";
+
+import Fill from "ol/style/Fill.js";
+import Style from "ol/style/Style.js";
+
+import { fromLonLat } from "ol/proj.js";
+import { getVectorContext } from "ol/render.js";
+
+import { defaults as defaultInteractions } from 'ol/interaction';
+
+let map: Map | null = null;
+
+onMounted(() => {
+  const base = new TileLayer({
+    source: new OSM(),
+  });
+
+  const clipLayer = new VectorLayer({
+    style: null,
+
+    source: new VectorSource({
+      url: "/addis-ababa.geojson",
+      format: new GeoJSON(),
+    }),
+  });
+
+  const clipSource = clipLayer.getSource()!;
+
+  //restriction to the geojson extent
+  clipSource.on("addfeature", () => {
+    base.setExtent(clipSource.getExtent());
+
+    console.log("ADDIS LOADED");
+    console.log("Addis extent:", clipSource.getExtent());
+  });
+
+  const clipStyle = new Style({
+    fill: new Fill({
+      color: "black",
+    }),
+  });
+
+ //cliping 
+  base.on("postrender", (event) => {
+    const vectorContext = getVectorContext(event);
+
+    const context = event.context as CanvasRenderingContext2D;
+
+    context.globalCompositeOperation = "destination-in";
+
+    clipSource.forEachFeature((feature) => {
+      vectorContext.drawFeature(feature, clipStyle);
+    });
+
+    context.globalCompositeOperation = "source-over";
+  });
+
+  map = new Map({
+    target: "map",
+
+    layers: [
+      base,
+      clipLayer,
+    ],
+    interactions: defaultInteractions(
+      {
+        dragPan: false,
       }
-  };
+    ),
+    view: new View({
+      center: fromLonLat([38.825, 8.9571]),
+      zoom: 11.7,
+      minZoom: 11.7,
 
-onMounted(async () => {
-    if (!mapContainer.value) return;
-
-    const maplibregl = await import("maplibre-gl");
-
-    map = new maplibregl.Map({
-        container: mapContainer.value,
-        style: "https://tiles.openfreemap.org/styles/positron",
-        center: [38.76, 8.94],
-        zoom: 12,
-
-    });
-
-    map.on("load", () => {
-        const world = turf.polygon([[
-            [-180, -90],
-            [180, -90],
-            [180, 90],
-            [-180, 90],
-            [-180, -90]
-        ]]);
-
-        const mask = turf.difference(
-            turf.featureCollection<Polygon | MultiPolygon>([
-                world,
-                addis
-            ])
-        );
-
-        if (!mask) return;
-
-        map.addSource("city-mask", {
-            type: "geojson",
-            data: mask
-        });
-
-        map.addLayer({
-            id: "city-mask",
-            type: "fill",
-            source: "city-mask",
-            paint: {
-                "fill-color": "#000000",
-                "fill-opacity": 0.9
-            }
-        });
-    });
+    }),
+  });
 });
 
 onUnmounted(() => {
-    if (map) map.remove();
+  if (map) {
+    map.setTarget(undefined);
+    map = null;
+  }
 });
-
 </script>
 
 <template>
-    <div class="map-wrapper">
-        <div ref="mapContainer" class="map-container"></div>
-    </div>
+  <div id="map"></div>
 </template>
 
 <style scoped>
-.map-wrapper,
-.map-container {
+#map {
     margin: 1rem;
-    width: auto;
-    height: 100vh;
+    border: 2px;
+    border-style:dashed;
+    width: 50%;
+    height: 800px;
+    background: transparent;
 }
 </style>
