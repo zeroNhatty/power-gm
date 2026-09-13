@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted } from "vue";
+import "ol/ol.css";
 
 import Map from "ol/Map.js";
 import View from "ol/View.js";
@@ -38,12 +39,15 @@ onMounted(() => {
   const clipSource = clipLayer.getSource()!;
 
   //restriction to the geojson extent
-  clipSource.on("addfeature", () => {
-    base.setExtent(clipSource.getExtent());
+  const clipSourceExtent = clipSource.getExtent();
+  if (clipSourceExtent != null) {
+    clipSource.on("addfeature", () => {
+      base.setExtent(clipSourceExtent);
 
-    console.log("ADDIS LOADED");
-    console.log("Addis extent:", clipSource.getExtent());
-  });
+      console.log("ADDIS LOADED");
+      console.log("Addis extent:", clipSource.getExtent());
+    });
+  }
 
   const clipStyle = new Style({
     fill: new Fill({
@@ -51,7 +55,7 @@ onMounted(() => {
     }),
   });
 
- //cliping 
+ //cliping
   base.on("postrender", (event) => {
     const vectorContext = getVectorContext(event);
 
