@@ -1,3 +1,5 @@
+# Active Development will be done in [pgms](https://github.com/zeroNhatty/pgms.git)
+
 # power-gm (Power Grid Monitor)
 
 - This is the initial idea for the project [Initial Idea](docs/InitialIdea.md).
